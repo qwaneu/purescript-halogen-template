@@ -31,12 +31,12 @@ component =
       [ HH.h1_
           [ HH.text "Hello world!" ]
       , HH.p_
-          [ HH.text "Why not toggle this button:" ]
+          [ HH.text "Why not toggle the button?" ]
       , HH.button
           [ HE.onClick (HE.input_ ToggleState) ]
           [ HH.text
               if not state.on
-              then "Don't push me"
+              then "Don't push it."
               else "I said don't push me!"
           ]
       ]

@@ -4,12 +4,12 @@ This is a template for starting a fresh project using the [purescript-halogen](h
 
 ## Prerequisites
 
-This guide assumes you already have Git and Node.js installed with `npm` somewhere on your path.
+This guide assumes you already have Git and Node.js installed with `npm` somewhere on your path. If you use `nvm`, the node version manager, you can do `nvm use` to get a working node version.
 
-In the PureScript ecosystem [Bower](http://bower.io/) is currently the most commonly used package manager and we'll be relying on it for this project, so if you don't already have it, you can install it like this:
+Unlike some other purescript libraries, we use psc-package, because bower has deprecated itself, and bower dependencies don't age well.
 
 ``` shell
-npm install --global bower
+npm install --global psc-package
 ```
 
 ## Getting started
@@ -30,7 +30,7 @@ npm install
 Finally you'll need to install the PureScript library dependencies for this project with Bower:
 
 ``` shell
-bower install
+psc-package update
 ```
 
 ## Building
@@ -64,9 +64,9 @@ To start a process that will watch the source files and trigger a reload wheneve
 If you're using an editor that supports `purs ide` or running [`pscid`](https://github.com/kRITZCREEK/pscid) there's an option for getting near-instant builds of the app while you work on it:
 
 ``` shell
-npm run watch-fast
+npm run parcel:watch
 ```
 
-This will start a watch process that uses [Webpack](https://github.com/webpack/webpack) to rebundle the app whenever the _output_ files are changed. Since `purs ide` rebuilds modules on save, this means you can use this much faster bundle-only rebuild script.
+This will start a watch process that uses [Parcel](https://parceljs.org) to rebundle the app whenever the _output_ files are changed. Since `purs ide` rebuilds modules on save, this means you can use this much faster bundle-only rebuild script.
 
 :warning: `purs ide` only rebuilds one module at a time, so sometimes the bundle will end up in an inconsistent state, resulting in runtime errors. This occurs when a change is made in one module that breaks other modules that depend on it. The solution is to run a full build when a change like this is made, as the compiler will force you to resolve those errors.

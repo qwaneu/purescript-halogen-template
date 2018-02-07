@@ -5,6 +5,8 @@
 /node_modules/
 /output/
 /dist/app.js
+/dist/*.html
 /dist/*.js
 /dist/*.map
 /dist/index-watch.html
+npm-debug.log

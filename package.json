@@ -4,7 +4,7 @@
     "build": "pulp build --to dist/app.js",
     "watch": "pulp -w build --to dist/app.js",
     "watch-fast": "webpack --entry ./entry.js --output-filename dist/app.js --progress --watch",
-    "parcel:watch": "parcel index-watch.html"
+    "parcel:watch": "parcel index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.5.1",

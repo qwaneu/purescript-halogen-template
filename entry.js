@@ -1,20 +1,14 @@
-const main = require("./output/Main").main;
-var reloadCount = reloadCount || 0;
-removeOldInstances = function() {
-  const appElement = document.getElementById('app');
-  while(appElement.firstChild) {
-    appElement.removeChild(appElement.firstChild);
-  };
-};
-
-// try reloading
 if(module.hot) {
-  module.hot.accept(() => {
-    reloadCount++;
-    console.log("Hot reloaded " + reloadCount.toString() + " times." );
-    removeOldInstances();
-    main(); // for some reason nothing happens
+  module.hot.accept(function () {
+    console.log('hot module accepted');
+    Array.from(document.querySelectorAll('body > div')).map(x => x.remove());
+    console.log('deleted old entries');
+    require("./output/Main").rerunUI(document.body)();
   });
-};
 
-main(); // this gets run the first time
+  require("./output/Main").main();
+  console.log('started in hot reloading mode');
+} else {
+  require("./output/Main").main();
+  console.log('started in normal mode');
+}

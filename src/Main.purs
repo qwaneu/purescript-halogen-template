@@ -3,16 +3,24 @@ module Main where
 import Prelude
 
 import Component (component)
+import Control.Monad.Aff (launchAff_)
+import Control.Monad.Aff.Console (log)
 import Control.Monad.Eff (Eff)
 import DOM.Node.ParentNode (QuerySelector(..))
 import Data.Traversable (traverse_)
 import Halogen.Aff as HA
 import Halogen.VDom.Driver (runUI)
 
-appElement :: QuerySelector
-appElement = QuerySelector "#app"
+rerunUI body = launchAff_ do
+  log "rerunUI"
+  run body
 
-main :: Eff (HA.HalogenEffects ()) Unit
+run body = do
+  log "run"
+  runUI component unit body
+
+-- main :: Eff (HA.HalogenEffects ()) Unit
 main = HA.runHalogenAff do
-  HA.awaitLoad
-  traverse_ (runUI component unit) =<< HA.selectElement appElement
+  body <- HA.awaitBody
+  log "main"
+  run body

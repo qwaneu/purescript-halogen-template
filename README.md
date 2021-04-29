@@ -1,3 +1,7 @@
+# This fork is now archived
+
+Upstream https://github.com/purescript-halogen/purescript-halogen-template is  now using parcel as well, and looks actively maintained.
+
 # purescript-halogen-template
 
 This is a template for starting a fresh project using the [purescript-halogen](https://github.com/slamdata/purescript-halogen) library for declarative user interfaces.
